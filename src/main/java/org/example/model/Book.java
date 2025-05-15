@@ -1,12 +1,10 @@
 package org.example.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.HashSet;
 import java.util.Set;
+
 @Entity
 public class Book {
     @Id
@@ -14,6 +12,7 @@ public class Book {
     private long id;
     private String title;
 
+    @ManyToMany(mappedBy = "books")
     private Set<Author> authors = new HashSet<>();
 
     public Book() {
