@@ -44,6 +44,22 @@ public class Main {
                 System.out.println("Authori: " + a.getName());
             }
         }
+//        Pronalaženje knjige
+        Book book = em.find(Book.class, 1L);
+        if (book != null) {
+//            Ažuriranje naslova knjige
+            book.setTitle("Novi naziv knjige");
+        }
+        book = em.find(Book.class, 1L);
+        System.out.println("Novi naziv: " + book.getTitle());
+
+//        Pronalaženje knjige
+        book = em.find(Book.class, 1L);
+
+        if (book != null) {
+//            Brisanje knjige
+            em.remove(book);
+        }
 
         tx.commit();
         em.close();
